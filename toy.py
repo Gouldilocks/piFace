@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import seaborn as sns
+# import numpy as np
+# import pandas as pd
+# import seaborn as sns
 import os
 
 # Importing Deep Learning Libraries
+print("hello")
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
+print("hello 2")
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers import Dense, Input, Dropout, GlobalAveragePooling2D, Flatten, Conv2D, BatchNormalization, Activation, MaxPooling2D

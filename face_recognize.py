@@ -2,22 +2,9 @@ import numpy as np
 import face_recognition as fr
 import cv2
 import os
-import dlib
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# # Importing Deep Learning Libraries
-# from tensorflow.keras.preprocessing.image import load_img, img_to_array
-# from tensorflow.keras.preprocessing.image import ImageDataGenerator
-# from tensorflow.keras.layers import Dense, Input, Dropout, GlobalAveragePooling2D, Flatten, Conv2D, BatchNormalization, Activation, MaxPooling2D
-# from tensorflow.keras.models import Model, Sequential
-# from tensorflow.keras.optimizers import Adam, SGD, RMSprop
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 print("hello")
-picture_size = 48
-folder_path = "./data/images"
-
-detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor("./models/shape_predictor_68_face_landmarks.dat")
 
 video_capture = cv2.VideoCapture(0)
 # loop over all files in directory "people"
@@ -56,23 +43,6 @@ while True:
         print("bottom: ", bottom)
         print("left: ", left)
 
-        # for face in faces:
-        #     x1 = face.left()  # left point
-        #     y1 = face.top()  # top point
-        #     x2 = face.right()  # right point
-        #     y2 = face.bottom()  # bottom point
-
-        #     # Look for the landmarks
-        #     landmarks = predictor(image=gray, box=face)
-
-        #     for n in range(0, 68):
-        #         x = landmarks.part(n).x
-        #         y = landmarks.part(n).y
-
-        #         # Draw a circle
-        #         cv2.circle(img=frame, center=(x, y), radius=2,
-        #                 color=(0, 255, 0), thickness=-1)
- 
         matches = fr.compare_faces(known_face_encodings, face_encoding)
 
         name = "Unknown Face"
