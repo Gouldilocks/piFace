@@ -5,16 +5,13 @@ import matplotlib.pyplot as plt
 import os
 
 # Importing Deep Learning Libraries
-print("hello")
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
-print("hello 2")
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers import Dense, Input, Dropout, GlobalAveragePooling2D, Flatten, Conv2D, BatchNormalization, Activation, MaxPooling2D
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.optimizers import Adam, SGD, RMSprop
 
-print("here")
 picture_size = 48
 folder_path = "./data/images/"
 
@@ -137,3 +134,5 @@ history = model.fit_generator(generator=train_set,
 
 # save the model
 model.save("model.h5")
+
+
