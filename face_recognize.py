@@ -6,15 +6,15 @@ import dlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Importing Deep Learning Libraries
-from keras.preprocessing.image import load_img, img_to_array
-from keras.preprocessing.image import ImageDataGenerator
-from keras.layers import Dense, Input, Dropout, GlobalAveragePooling2D, Flatten, Conv2D, BatchNormalization, Activation, MaxPooling2D
-from keras.models import Model, Sequential
-from tensorflow.keras.optimizers import Adam, SGD, RMSprop
-
+# # Importing Deep Learning Libraries
+# from tensorflow.keras.preprocessing.image import load_img, img_to_array
+# from tensorflow.keras.preprocessing.image import ImageDataGenerator
+# from tensorflow.keras.layers import Dense, Input, Dropout, GlobalAveragePooling2D, Flatten, Conv2D, BatchNormalization, Activation, MaxPooling2D
+# from tensorflow.keras.models import Model, Sequential
+# from tensorflow.keras.optimizers import Adam, SGD, RMSprop
+print("hello")
 picture_size = 48
-folder_path = ""
+folder_path = "./data/images"
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("./models/shape_predictor_68_face_landmarks.dat")
@@ -41,8 +41,9 @@ for filename in os.listdir("people"):
  
 while True:
     ret, frame = video_capture.read()
-    gray = cv2.cvtColor(src=frame, code=cv2.COLOR_BGR2GRAY)
-    faces = detector(gray)
+
+    # gray = cv2.cvtColor(src=frame, code=cv2.COLOR_BGR2GRAY) # used for the dots
+    # faces = detector(gray) # Used for the dots
 
     rgb_frame = frame[:, :, ::-1]
 
@@ -50,23 +51,27 @@ while True:
     face_encodings = fr.face_encodings(rgb_frame, face_locations)
 
     for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
+        print("top: ", top)
+        print("right: ", right)
+        print("bottom: ", bottom)
+        print("left: ", left)
 
-        for face in faces:
-            x1 = face.left()  # left point
-            y1 = face.top()  # top point
-            x2 = face.right()  # right point
-            y2 = face.bottom()  # bottom point
+        # for face in faces:
+        #     x1 = face.left()  # left point
+        #     y1 = face.top()  # top point
+        #     x2 = face.right()  # right point
+        #     y2 = face.bottom()  # bottom point
 
-            # Look for the landmarks
-            landmarks = predictor(image=gray, box=face)
+        #     # Look for the landmarks
+        #     landmarks = predictor(image=gray, box=face)
 
-            for n in range(0, 68):
-                x = landmarks.part(n).x
-                y = landmarks.part(n).y
+        #     for n in range(0, 68):
+        #         x = landmarks.part(n).x
+        #         y = landmarks.part(n).y
 
-                # Draw a circle
-                cv2.circle(img=frame, center=(x, y), radius=2,
-                        color=(0, 255, 0), thickness=-1)
+        #         # Draw a circle
+        #         cv2.circle(img=frame, center=(x, y), radius=2,
+        #                 color=(0, 255, 0), thickness=-1)
  
         matches = fr.compare_faces(known_face_encodings, face_encoding)
 
