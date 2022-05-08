@@ -37,10 +37,6 @@ while True:
     face_encodings = fr.face_encodings(rgb_frame, face_locations)
 
     for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-        print("top: ", top)
-        print("right: ", right)
-        print("bottom: ", bottom)
-        print("left: ", left)
 
         matches = fr.compare_faces(known_face_encodings, face_encoding)
 
