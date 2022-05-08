@@ -33,7 +33,7 @@ python3 piface.py
 * Once the live video pops up, it will show your webcam, with a little red bar below your face, indicating your current emotion that it thinks you are exemplifying. Press "q" to quit the window. 
 
 ### create_model.py
-* In this modelling script, I took portions from these previously-made models, and ran it to what I wanted from the model:
+* In this modelling script, I took portions from these previously-made models, and adjusted it to what I wanted:
   * https://www.kaggle.com/code/raksharamkumar/expdet
   * https://www.kaggle.com/code/ebrarteke/emotion-detection/notebook
   * https://www.kaggle.com/code/sairamankoraveni/final-face-emotion-recog
